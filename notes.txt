@@ -1,0 +1,96 @@
+To Start new Project after activating virtual environment:
+> django admin startproject <project_name>
+
+To Start new app in the Project:
+1. > django-admin startapp <app_name>
+   or
+   > python manage.py startapp <app_name>
+2. add app name to INSTALLED_APPS in settings.py
+3. When any item is added to installed app run
+   > python manage.py migrate
+
+To run the server:
+>python manage.py runserver
+
+Commands when working with models:
+Any change in Databases:
+>python manage.py makemigrations
+> python manage.py migrate
+
+Again run:
+> python manage.py migrate
+
+Also register the models to admin.py file
+-----------------------------------------------
+Interacting with Databases:
+1.Basic Interacting with database:
+  In terminal:
+> python manage.py shell
+> from <app_name>.models import <model1>, <model2>...
+examples:
+Some buit in commands:
+> <model1>.objects.all()
+> <model1>.objects.get(id=1)
+
+To create the model in the shell itself, enter the parameters:
+e.g.,
+> Product.objects.create(title="New Product2", description="New description2",price="12312", summary="good")
+
+
+
+2. Using Admin Interface for interacting with models.
+
+    a. Register the models to admin.py file in application directory.
+     http://books.agiliq.com/projects/django-orm-cookbook/en/latest/one_to_one.html
+
+Once registers model classes are ready to be used with admin interface.
+
+Creating SuperUser for our models.
+>python manage.py createsuperuser
+
+********* 
+If the database is deleted:
+1. Create superuser again.
+2. 
+--------------------------------------------------
+
+Authentication:
+1. make sure the below both settings are available in settings.py
+    'django.contrib.auth',
+    'django.contrib.contenttypes'
+2. Make sure passwords are stored safely, do not store as plain text
+3. Make use of password hashing algorithms like bcrypt and Argon2 and add them in
+   settings.py in separate PASSWORD_HASHERS section.
+4. Add these libraries to settings.py in pass
+5. Add validator options to the user for better input.
+
+-----------------------------------------------------
+
+Debugging: (using django-debug-toolbar)
+
+1. install django-debug-toolbar
+2. Add debug_toolbar to INSTALLED_APPS in settings.py
+3. make sure debug toolbar is also listed in middleware in settings.py.
+    'debug_toolbar.middleware.DebugToolbarMiddleware'
+4. import settings and use debug option to the file to be debuged.
+   example added to debug urlpatterns
+5. Add Internal IP's settings in the settings.py to just limit the debug to local server.
+
+-------------------------------------------------
+**
+Libraries useful when workign with DJango:
+Imaging library: pillow
+ Along with Jpeg support : pip install pillow --global-option="build_ext"--global-option="--disable-jpeg"
+fake data generator for Testing : Faker
+
+
+---------------------------------------------------------
+
+
+
+Steps to develop the application in the project:
+1. implement the models.py file in the app after creating the app.
+	In the models, implement the classes of the db and its attributes and 		map them to db.
+
+
+------------------------------
